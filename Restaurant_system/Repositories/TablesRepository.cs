@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Enumeration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Restaurant_system.Repositories
     public class TablesRepository
     {
         private List<Tables> tables { get; set; } = new List<Tables>();
+        public string TableDataFileName = "C:/desktop ml/Renkuosi programuoti/Back-End C Sharp code/221117 advanced code mb C#AdvancedEgzaminas/Restaurant_system/Restaurant_system/tables.json";
 
         public List<Tables> GenerateTablesDataToJson()
         {
@@ -95,7 +97,7 @@ namespace Restaurant_system.Repositories
 
 
 
-                    File.WriteAllText("C:/desktop ml/Renkuosi programuoti/Back-End C Sharp code/221017 code mb paskaita Basic_C#_exam/Order System/Order System/orders.json",
+                    File.WriteAllText(TableDataFileName,
                 JsonConvert.SerializeObject(tables));
 
             return tables;
@@ -104,7 +106,7 @@ namespace Restaurant_system.Repositories
 
         public List<Tables> WriteToJson()
         {
-            File.WriteAllText("C:/desktop ml/Renkuosi programuoti/Back-End C Sharp code/221117 advanced code mb C#AdvancedEgzaminas/Restaurant_system/Restaurant_system/tables.json",
+            File.WriteAllText(TableDataFileName,
             JsonConvert.SerializeObject(tables));
             Console.WriteLine("tables writed to JSON file");
 
@@ -113,9 +115,15 @@ namespace Restaurant_system.Repositories
 
         public List<Tables> ReadFromJson()
         {
-            string readjson = File.ReadAllText("C:/desktop ml/Renkuosi programuoti/Back-End C Sharp code/221117 advanced code mb C#AdvancedEgzaminas/Restaurant_system/Restaurant_system/tables.json");
-            tables = JsonConvert.DeserializeObject<List<Tables>>(readjson);
-            Console.WriteLine("tables readed to JSON file");
+            ReadFileExceptions readFileExceptions = new ReadFileExceptions();
+            var readfile = readFileExceptions.ReadFileException();
+            if ( readfile == true)
+            {
+                string readjson = File.ReadAllText(TableDataFileName);
+                tables = JsonConvert.DeserializeObject<List<Tables>>(readjson);
+                Console.WriteLine("tables readed to JSON file");
+            }
+            else { Console.WriteLine("Unsuccessful data reading");  }
 
 
             return tables;
