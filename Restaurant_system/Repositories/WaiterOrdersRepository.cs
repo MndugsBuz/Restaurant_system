@@ -7,9 +7,11 @@ using Restaurant_system.Entities;
 
 namespace Restaurant_system.Repositories
 {
+   /*
     public class WaiterOrdersRepository;
     {
        private List<WaiterOrders> waiterOrders { get; set; } = new List<WaiterOrders>();
 
     }
+   */
 }

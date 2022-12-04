@@ -8,3 +8,4 @@ UserInterface userInterface = new UserInterface();
 userInterface.Menu();
 Console.WriteLine("Your Choise");
 Console.ReadLine();
+userInterface.MenuOption();
