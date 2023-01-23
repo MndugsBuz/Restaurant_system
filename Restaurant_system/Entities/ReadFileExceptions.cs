@@ -16,6 +16,7 @@ namespace Restaurant_system.Entities
             try
             {
                 string readjson = File.ReadAllText("C:/desktop ml/Renkuosi programuoti/Back-End C Sharp code/221117 advanced code mb C#AdvancedEgzaminas/Restaurant_system/Restaurant_system/tables.json");
+                readed = true;
             }
 
             catch (ArgumentNullException e)

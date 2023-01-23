@@ -54,7 +54,7 @@ namespace Restaurant_system
                         {
                             Console.WriteLine("Menu [4]: Table [1] Rport table List [2]");
                             
-                            tablesRepository.GenerateTablesDataToJson();
+                            //tablesRepository.GenerateTablesDataToJson();
                             tablesRepository.ReadFromJson();
                             tablesRepository.PrintTables();
                            
